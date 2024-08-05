@@ -28,7 +28,7 @@ exports.registerUser = async (req, res) => {
 
 // 用户登录
 exports.loginUser = async (req, res) => {
-    const secret_key = process.env.SECRET_KEY
+    
     try {
         const { username, password } = req.body
 
@@ -45,7 +45,7 @@ exports.loginUser = async (req, res) => {
         }
 
         // 生成JSON Web token(JWT)
-        const token = jwt.sign({ username: existingUser.username }, secret_key, { expiresIn: '1h' })
+        const token = jwt.sign({ username: existingUser.username }, 'd4d2be3d807c292fd047a6de96dfb2b5f7a2bcea4e14dc9ca8f822f6d1c87dea', { expiresIn: '1h' })
 
         return res.status(200).json({ token })
     } catch (error) {
